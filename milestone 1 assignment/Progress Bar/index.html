@@ -1,0 +1,45 @@
+<!-- 
+    22. Progress Bar
+    Create a progress bar that fills up as the user scrolls down the page.
+ -->
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title>Scroll Progress Bar</title>
+   <style>
+     #progress-bar {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 0;
+       height: 3px;
+       background-color: blue;
+       z-index: 9999;
+       transition: width 0.2s ease-out;
+     }
+   </style>
+   <script>
+     document.addEventListener('scroll', function() {
+       var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+       var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+       var scrollProgress = (scrollTop / scrollHeight) * 100;
+       var progressBar = document.getElementById('progress-bar');
+       progressBar.style.width = scrollProgress + '%';
+     });
+   </script>
+ </head>
+ <body>
+   <h1>Scroll Progress Bar</h1>
+   <div id="progress-bar"></div>
+   
+   <!-- Content of the page -->
+   
+   <script>
+     // Adding some content for demonstration purposes
+     var content = document.createElement('div');
+     content.style.height = '2000px';
+     document.body.appendChild(content);
+   </script>
+ </body>
+ </html>
+ 
